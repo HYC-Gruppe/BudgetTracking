@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+  </plugin-info>
+  <resource type="i18n" name="i18n" location="capgemini.hyc.BudgetTracking.BudgetTracking"/>
+  <report name="Budget Tracking Report" i18n-name-key="budget-tracking.name" key="budget-tracking" class="capgemini.hyc.BudgetTracking.jira.reports.BudgetTracking">
+    <description key="budget-tracking.description">The Budget Tracking Plugin</description>
+    <resource name="Html-view" type="velocity" location="Html-view.vm"/>
+    <resource name="i18n" type="i18n" location="BudgetTracking"/>
+    <label key="budget-tracking.label"></label>
+    <!-- the properties of this report which the user must select before running it -->
+    <!-- Uncomment and edit properties...    -->
+    <properties>
+        <property>
+            <key>erID</key>
+            <name>ER-ID</name>
+            <description>Bitte die ID des gewünschten Enhancement Requests eintragen.</description>
+            <type>string</type>
+        </property>
+        <property>
+            <key>linkType</key>
+            <name>Link-Type</name>
+            <description>Bitte den gewünschten Link Typen auswählen.</description>
+            <type>select</type>
+            <values class="capgemini.hyc.BudgetTracking.jira.reports.ProjectValuesGenerator"/>
+        </property>
+    </properties>
+  </report>
+</atlassian-plugin>

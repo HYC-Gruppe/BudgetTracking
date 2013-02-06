@@ -1,0 +1,84 @@
+<table>
+<tr>
+	<td>ID:</td>
+	<td><b>$ER.getKey()</b></td>
+</tr>
+<tr>
+	<td>Name:</td>
+	<td><b>$ER.getSummary()</b></td>
+</tr>
+</table>
+
+<p></p>
+
+<table border="0" rules="rows" width=80% summary="Tabelle gibt das Ergebnis aus der Suche aus">
+	<thead>
+		<tr align="right">
+			<td><b>Type</b></td>
+			<td><b>ID</b></td>
+			<td><b>Name</b></td>
+			<td><b>Status</b></td>
+			<td align="right"><b>CBB</b></td>
+			<td align="right"><b>PTD</b></td>
+			<td align="right"><b>ETC</b></td>
+			<td align="right"><b>EAC</b></td>
+			<td align="right"><b>DVI</b></td>
+		</tr>
+	</thead>
+<tbody>
+	#foreach ($issue in $Issues)
+		<tr>
+			<td>#displayTypeNoLink($issue.getIssue())</td>
+			<td>$issue.getKey()</td>
+			<td>$issue.getSummary()</td> 
+			<td>#displayConstantIcon($issue.getStatus())</td> 
+			<td align="right">$issue.getCbb()</td> 
+			<td align="right">$issue.getPtd()</td> 
+			<td align="right">$issue.getEtc()</td> 
+			<td align="right">$issue.getEac()</td> 
+			<td align="right">$issue.getDvi()</td>  
+		</tr>
+	#end
+</tbody>
+<tfoot>
+		<tr align="right">
+			<td colspan="4" align="right"><b>Summe:</b></td>
+			<td>$cbbSum</td> 
+			<td>$ptdSum</td>
+			<td>$etcSum</td>
+			<td>$eacSum</td>
+			<td><b>$dviSum</b></td>
+		</tr>
+</tfoot>
+</table> 
+<p></p>
+
+
+<table width="25%">
+		<tr>
+			<td colspan="2"><b>Legende:</b></td>
+		</tr>
+		<tr>
+			<td>CBB:</td>
+			<td>Current Base Budget
+		</tr>
+		<tr>
+			<td>PTD:</td>
+			<td>Project To Date</td>
+		</tr>
+		<tr>
+			<td>ETC:</td>
+			<td>Estimate To Complete</td>
+		</tr>
+		<tr>
+			<td>EAC:</td>
+			<td>Estimate At Completion</td>
+		</tr>
+		<tr>
+			<td>DVI:</td>
+			<td>Delivery Value Improvement</td>
+		</tr>
+		<tr>
+			<td colspan="2">Kennzahlen werden in BT (Bearbeitungstagen) angegeben</td>
+		</tr>
+</table>
